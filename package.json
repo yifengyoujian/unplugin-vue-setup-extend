@@ -1,13 +1,15 @@
 {
   "name": "unplugin-vue-setup-extend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vue setup extend options name",
   "keywords": [
     "unplugin",
     "vite",
     "webpack",
     "rollup",
-    "transform"
+    "transform",
+    "vue",
+    "name"
   ],
   "homepage": "https://github.com/yifengyoujian/unplugin-vue-setup-extend",
   "bugs": {

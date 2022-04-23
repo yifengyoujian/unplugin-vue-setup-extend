@@ -98,3 +98,11 @@ module.exports = {
 ```
 
 <br></details>
+## Template
+```html
+<template>
+</template>
+<script setup lang="ts" name="App">
+// You have to have content
+</script>
+```
