@@ -17,10 +17,10 @@ export default createUnplugin<Options>(options => {
       return filter(id)
     },
     async transform(code, id) {
-      if (!/\.vue$/.test(id)) {
-        return null
+      if (id.endsWith('.vue') || id.includes('.vue?vue')) {
+        return await supportScriptName.call(this, code, id)
       }
-      return supportScriptName.call(this, code, id)
+      return null
     },
   }
 })

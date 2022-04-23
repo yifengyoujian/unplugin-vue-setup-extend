@@ -1,6 +1,6 @@
 import { parse, compileScript } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
-export function supportScriptName(code: string, id: string) {
+export async function supportScriptName(code: string, id: string) {
     const FILENAME_RE = /.*[\\/](\S*)/
     let s: MagicString | undefined
     const str = () => s || (s = new MagicString(code))
