@@ -1,7 +1,5 @@
 # unplugin-vue-setup-extend
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://github.com/yifengyoujian/unplugin-vue-setup-extend)
-
 Thanks to [vite-plugin-vue-setup-extend](https://github.com/vbenjs/vite-plugin-vue-setup-extend).
 
 ## Explain
