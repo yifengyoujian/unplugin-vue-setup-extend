@@ -1,8 +1,7 @@
 import { parse, compileScript } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
-const FILENAME_RE = /.*\/(\S*)/
-
 export function supportScriptName(code: string, id: string) {
+    const FILENAME_RE = /.*[\\/](\S*)/
     let s: MagicString | undefined
     const str = () => s || (s = new MagicString(code))
     const { descriptor } = parse(code)
@@ -24,6 +23,9 @@ export default defineComponent({
         }
 
         const map = str().generateMap({ hires: true })
+
+        console.log(FILENAME_RE.exec(id));
+        
         const filename = FILENAME_RE.exec(id)![1]
 
         map.file = filename
