@@ -11,8 +11,8 @@ export default function transform(code: string, id: string) {
   const FILENAME_RE = /.*[\\/]*(\S*)/
   const { descriptor } = parse(code)
 
-  // fix: No scriptSetup to exit directly
-  if (!descriptor.scriptSetup) {
+  // fix: No scriptSetup or have a script to exit directly
+  if (!descriptor.scriptSetup || descriptor.script) {
     return null
   }
   
