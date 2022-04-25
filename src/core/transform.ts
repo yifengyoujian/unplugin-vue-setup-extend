@@ -11,10 +11,11 @@ export default function transform(code: string, id: string) {
   const FILENAME_RE = /.*[\\/]*(\S*)/
   const { descriptor } = parse(code)
 
-  if (descriptor.script && !descriptor.scriptSetup) {
+  // fix: No scriptSetup to exit directly
+  if (!descriptor.scriptSetup) {
     return null
   }
-
+  
   const magic = new MagicString(code)
 
   const {
