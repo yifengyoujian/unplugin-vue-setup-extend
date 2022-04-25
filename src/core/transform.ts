@@ -1,5 +1,6 @@
 import { parse, compileScript } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
+import { basename } from "path"
 
 // fix: Remove the vue-demi  
 const generateScript = (lang: string | true, name: string | true): string =>
@@ -8,7 +9,6 @@ const generateScript = (lang: string | true, name: string | true): string =>
   }> export default {name: '${name}'}</script>`
 
 export default function transform(code: string, id: string) {
-  const FILENAME_RE = /.*[\\/]*(\S*)/
   const { descriptor } = parse(code)
 
   // fix: No scriptSetup or have a script to exit directly
@@ -25,7 +25,7 @@ export default function transform(code: string, id: string) {
   name && magic.appendLeft(0, generateScript(lang, name))
 
   const map = magic.generateMap({ hires: true })
-  const filename = FILENAME_RE.exec(id)![1]
+  const filename = basename(id)
 
   map.file = filename
   map.sources = [filename]
