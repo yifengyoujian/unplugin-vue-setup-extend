@@ -16,7 +16,8 @@ export default createUnplugin<Options>(options => {
       return filter(id)
     },
     transform(code, id) {
-      if (id.endsWith('.vue') || id.includes('.vue?vue')) {
+      // fix: Narrow down the match
+      if (id.endsWith('.vue') || id.includes('.vue?vue&type=script')) {
         return transform(code, id)
       }
       return null
