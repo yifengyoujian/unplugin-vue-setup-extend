@@ -10,10 +10,8 @@ The project applies to vue3 and vue2+composition-api
 
 ```bash
 npm i unplugin-vue-setup-extend --save-dev
-npm i vue-demi --save
 or
-yarn add unplugin-vue-setup-extend --dev
-yarn add vue-demi 
+yarn add unplugin-vue-setup-extend --dev 
 ```
 
 <details>
