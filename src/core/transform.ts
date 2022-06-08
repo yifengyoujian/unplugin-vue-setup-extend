@@ -4,8 +4,7 @@ import { basename } from "path"
 
 // fix: Remove the vue-demi  
 const generateScript = (lang: string | true, name: string | true): string =>
-  `<script${
-    lang ? ` lang="${lang}"` : ''
+  `<script${lang ? ` lang="${lang}"` : ''
   }> export default {name: '${name}'}</script>`
 
 export default function transform(code: string, id: string) {
@@ -15,12 +14,19 @@ export default function transform(code: string, id: string) {
   if (!descriptor.scriptSetup || descriptor.script) {
     return null
   }
-  
+
   const magic = new MagicString(code)
+
+  let SFCScriptBlock;
+  try {
+    SFCScriptBlock = compileScript(descriptor, { id })
+  } catch {
+    return null
+  }
 
   const {
     attrs: { name, lang },
-  } = compileScript(descriptor, { id })
+  } = SFCScriptBlock
 
   name && magic.appendLeft(0, generateScript(lang, name))
 
