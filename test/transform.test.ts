@@ -21,4 +21,11 @@ describe('transform', () => {
 
     expect(transform(code, 'App.vue')).toMatchSnapshot()
   })
+
+  it('Do not convert if there is an error in the script', async () => {
+    const code =`<script lang="ts" setup name="App">()()()</script>`
+
+    expect(transform(code, 'App.vue')).toMatchSnapshot()
+  })
+
 })

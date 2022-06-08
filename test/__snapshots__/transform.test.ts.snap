@@ -18,6 +18,8 @@ exports[`transform > Add lang attributes quickly to transformed code 1`] = `
 }
 `;
 
+exports[`transform > Do not convert if there is an error in the script 1`] = `null`;
+
 exports[`transform > If there is a script that does not convert 1`] = `null`;
 
 exports[`transform > transform script 1`] = `
