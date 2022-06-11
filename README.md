@@ -3,15 +3,19 @@
 Thanks to [vite-plugin-vue-setup-extend](https://github.com/vbenjs/vite-plugin-vue-setup-extend).
 
 ## Explain
+
+Name support for setup syntax sugar
+
 The project is based on [vite-plugin-vue-setup-extend](https://github.com/vbenjs/vite-plugin-vue-setup-extend) and [unplugin](https://github.com/unjs/unplugin) implementations.
 
 The project applies to vue3 and vue2+composition-api
+
 ## Install
 
 ```bash
 npm i unplugin-vue-setup-extend --save-dev
 or
-yarn add unplugin-vue-setup-extend --dev 
+yarn add unplugin-vue-setup-extend --dev
 ```
 
 <details>
@@ -19,16 +23,18 @@ yarn add unplugin-vue-setup-extend --dev
 
 ```ts
 // vite.config.ts
-import VueSetupExtend from 'unplugin-vue-setup-extend/vite'
+import VueSetupExtend from "unplugin-vue-setup-extend/vite";
 
 export default defineConfig({
   plugins: [
-    VueSetupExtend({ /* options */ }),
+    VueSetupExtend({
+      /* options */
+    }),
   ],
-})
+});
 ```
 
-Example: [`playground/`](./playground/)
+Example: [`examples/vite`](./examples/vite)
 
 <br></details>
 
@@ -37,16 +43,17 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import VueSetupExtend from 'unplugin-vue-setup-extend/rollup'
+import VueSetupExtend from "unplugin-vue-setup-extend/rollup";
 export default {
   plugins: [
-    VueSetupExtend({ /* options */ }),
+    VueSetupExtend({
+      /* options */
+    }),
   ],
-}
+};
 ```
 
 <br></details>
-
 
 <details>
 <summary>Webpack</summary><br>
@@ -56,9 +63,11 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-vue-setup-extend/webpack').default({ /* options */ })
-  ]
-}
+    require("unplugin-vue-setup-extend/webpack").default({
+      /* options */
+    }),
+  ],
+};
 ```
 
 <br></details>
@@ -70,9 +79,14 @@ module.exports = {
 // nuxt.config.js
 export default {
   buildModules: [
-    ['unplugin-vue-setup-extend/nuxt', { /* options */ }],
+    [
+      "unplugin-vue-setup-extend/nuxt",
+      {
+        /* options */
+      },
+    ],
   ],
-}
+};
 ```
 
 > This module works for both Nuxt 2 and [Nuxt Vite](https://github.com/nuxt/vite)
@@ -87,18 +101,44 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-vue-setup-extend/webpack').default({ /* options */ }),
+      require("unplugin-vue-setup-extend/webpack").default({
+        /* options */
+      }),
     ],
   },
-}
+};
 ```
 
+Example: [`examples/vue-cli`](./examples/vue-cli)
 <br></details>
+
 ## Template
+
+### The most basic demonstration
+
 ```html
-<template>
-</template>
+<template> </template>
 <script setup lang="ts" name="App">
-// You have to have content
+  // placeholder
 </script>
 ```
+
+### Some special cases
+
+If you have two scripts in your project, we will not convert them; please set the name property yourself in a normal script
+
+```html
+<template> </template>
+<script setup lang="ts" name="App">
+// The script tag setting here is invalid
+</script>
+
+<script lang="ts">
+  export default {
+    name: "App",
+  };
+</script>
+```
+#### Why do we need placeholder 
+
+If you do not write anything in the script, @vue/compiler does not parse script Setup so the name you set will not take effect.
