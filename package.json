@@ -9,7 +9,8 @@
     "rollup",
     "transform",
     "vue",
-    "name"
+    "name",
+    "extend"
   ],
   "homepage": "https://github.com/yifengyoujian/unplugin-vue-setup-extend",
   "bugs": {

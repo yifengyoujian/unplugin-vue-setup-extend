@@ -1,11 +1,5 @@
-<script setup name="boot-starp">
+<script setup name="boot-starp" lang="ts">
 // placeholder
-</script>
-<script>
-// placeholder
-export default {
-  name: "App"
-}
 </script>
 <style>
 html,
