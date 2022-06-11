@@ -69,7 +69,6 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.2.1",
-    "@vue/compiler-sfc": "^3.2.33",
     "magic-string": "^0.26.1",
     "unplugin": "^0.7.0"
   },

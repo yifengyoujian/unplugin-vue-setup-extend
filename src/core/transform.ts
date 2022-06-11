@@ -1,4 +1,4 @@
-import { parse, compileScript } from '@vue/compiler-sfc'
+import { parse, compileScript } from './compiler'
 import MagicString from 'magic-string'
 import { basename } from "path"
 
@@ -17,16 +17,9 @@ export default function transform(code: string, id: string) {
 
   const magic = new MagicString(code)
 
-  let SFCScriptBlock;
-  try {
-    SFCScriptBlock = compileScript(descriptor, { id })
-  } catch {
-    return null
-  }
-
   const {
     attrs: { name, lang },
-  } = SFCScriptBlock
+  } = compileScript(descriptor)
 
   name && magic.appendLeft(0, generateScript(lang, name))
 
