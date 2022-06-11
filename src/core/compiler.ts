@@ -26,6 +26,7 @@ export function parse(code: string) {
         } else {
             const [input = ""] = script.at(0) ?? []
             descriptor.scriptSetup = !!~input.indexOf('setup')
+            descriptor.code = input
         }
     }
 
@@ -36,8 +37,7 @@ export function parse(code: string) {
 
 export function compileScript(descriptor: Descriptor) {
     const { code } = descriptor
-    const [script = ""] = code.match(ScriptStartRegExp) ?? []
-    const [...attrs] = script.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
+    const [...attrs] = code.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
     
     return {
         attrs: attrs.reduce((acc: Attrs, attr) => {
