@@ -24,7 +24,7 @@ export function parse(code: string) {
             descriptor.script = true
             descriptor.scriptSetup = true
         } else {
-            const [input = ""] = script.at(0) ?? []
+            const [input = ""] = script[0] ?? []
             descriptor.scriptSetup = !!~input.indexOf('setup')
             descriptor.code = input
         }
