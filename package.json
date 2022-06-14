@@ -56,7 +56,7 @@
     "*.d.ts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup & npm run build:fix",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts",
     "lint": "eslint \"{src,test}/**/*.ts\"",
@@ -79,13 +79,9 @@
     "bumpp": "^7.1.1",
     "eslint": "^8.13.0",
     "esno": "^0.16.3",
-    "nodemon": "^2.0.15",
-    "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
     "tsup": "^6.0.1",
     "typescript": "^4.6.3",
-    "vite": "^2.9.2",
-    "vitest": "^0.14.1",
-    "webpack": "^5.72.0"
+    "vitest": "^0.14.1"
   }
 }
