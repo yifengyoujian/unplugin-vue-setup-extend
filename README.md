@@ -63,7 +63,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require("unplugin-vue-setup-extend/webpack").default({
+    require("unplugin-vue-setup-extend/webpack")({
       /* options */
     }),
   ],
@@ -101,7 +101,7 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require("unplugin-vue-setup-extend/webpack").default({
+      require("unplugin-vue-setup-extend/webpack")({
         /* options */
       }),
     ],
