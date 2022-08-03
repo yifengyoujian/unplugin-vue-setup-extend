@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue-setup-extend",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "vue setup extend options name",
   "keywords": [
     "unplugin",
@@ -22,31 +22,37 @@
   },
   "license": "MIT",
   "exports": {
+    "./*": "./*",
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
     "./vite": {
+      "types": "./dist/vite.d.ts",
       "require": "./dist/vite.js",
       "import": "./dist/vite.mjs"
     },
     "./webpack": {
+      "types": "./dist/webpack.d.ts",
       "require": "./dist/webpack.js",
       "import": "./dist/webpack.mjs"
     },
     "./rollup": {
+      "types": "./dist/rollup.d.ts",
       "require": "./dist/rollup.js",
       "import": "./dist/rollup.mjs"
     },
     "./nuxt": {
+      "types": "./dist/nuxt.d.ts",
       "require": "./dist/nuxt.js",
       "import": "./dist/nuxt.mjs"
     },
     "./types": {
+      "types": "./dist/types.d.ts",
       "require": "./dist/types.js",
       "import": "./dist/types.mjs"
-    },
-    "./*": "./*"
+    }
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -55,6 +61,13 @@
     "dist",
     "*.d.ts"
   ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "scripts": {
     "build": "tsup & npm run build:fix",
     "dev": "tsup --watch src",
@@ -82,6 +95,7 @@
     "rollup": "^2.70.1",
     "tsup": "^6.0.1",
     "typescript": "^4.6.3",
-    "vitest": "^0.20.2"
+    "vitest": "^0.19.1",
+    "vite": "^3.0.3"
   }
 }
