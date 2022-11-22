@@ -50,4 +50,24 @@ describe('compiler', () => {
             lang: "ts"
         })
     })
+
+    it('Eliminate comment interference', async () => {
+        const code = `<script setup name='App' lang='ts'></script>
+        <!-- <script></script> -->
+        <!-- <script name="BUG" lang="js"></script> -->
+        `
+        const descriptor = parse(code).descriptor
+
+        expect(descriptor).toEqual({
+            scriptSetup: true,
+            script: false,
+            code
+        })
+
+        expect(compileScript(descriptor).attrs).toEqual({
+            name: "App",
+            lang: "ts"
+        })
+
+    })
 })

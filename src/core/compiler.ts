@@ -17,8 +17,11 @@ export function parse(code: string) {
         code
     }
 
-    const [...script] = code.matchAll(ScriptStartRegExp)
-    
+    // Eliminate comment interference
+    const codeWithoutComment = code.replace(/<!--[\s\S]*?-->/g, '');
+
+    const [...script] = codeWithoutComment.matchAll(ScriptStartRegExp)
+
     if (script.length) {
         if (script.length > 1) {
             descriptor.script = true
@@ -26,7 +29,6 @@ export function parse(code: string) {
         } else {
             const [input = ""] = script[0] ?? []
             descriptor.scriptSetup = !!~input.indexOf('setup')
-            descriptor.code = input
         }
     }
 
@@ -37,8 +39,11 @@ export function parse(code: string) {
 
 export function compileScript(descriptor: Descriptor) {
     const { code } = descriptor
-    const [...attrs] = code.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
-    
+    // Eliminate comment interference
+    const codeWithoutComment = code.replace(/<!--[\s\S]*?-->/g, '');
+
+    const [...attrs] = codeWithoutComment.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
+
     return {
         attrs: attrs.reduce((acc: Attrs, attr) => {
             const { key, value } = attr.groups ?? {}
