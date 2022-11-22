@@ -94,6 +94,26 @@ export default {
 <br></details>
 
 <details>
+
+<summary>Nuxt3</summary><br>
+
+```ts
+// nuxt.config.js
+import VueSetupExtend from "unplugin-vue-setup-extend/vite"
+export default {
+   vite: {
+        plugins: [VueSetupExtend({})],
+  }
+};
+```
+
+> This module works for both Nuxt 3
+
+<br></details>
+
+<details>
+
+
 <summary>Vue CLI</summary><br>
 
 ```ts
