@@ -87,7 +87,7 @@
     "unplugin": "^1.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.31.0",
+    "@antfu/eslint-config": "^0.35.1",
     "@types/node": "^18.0.0",
     "bumpp": "^8.1.0",
     "eslint": "^8.13.0",
