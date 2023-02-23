@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.2",
-    "magic-string": "^0.26.1",
+    "magic-string": "^0.30.0",
     "unplugin": "^1.0.0"
   },
   "devDependencies": {
