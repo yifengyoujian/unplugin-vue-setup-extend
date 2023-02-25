@@ -70,4 +70,25 @@ describe('compiler', () => {
         })
 
     })
+
+    it('Interference from other labels', async () => {
+        const code = `
+        <template lang='pug'></template>
+        <script setup name='App' lang='ts'></script>
+        <style lang='scss'></style>
+        `
+        const descriptor = parse(code).descriptor
+
+        expect(descriptor).toEqual({
+            scriptSetup: true,
+            script: false,
+            code
+        })
+
+        expect(compileScript(descriptor).attrs).toEqual({
+            name: "App",
+            lang: "ts"
+        })
+
+    })
 })

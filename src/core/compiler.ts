@@ -39,10 +39,10 @@ export function parse(code: string) {
 
 export function compileScript(descriptor: Descriptor) {
     const { code } = descriptor
-    // Eliminate comment interference
-    const codeWithoutComment = code.replace(/<!--[\s\S]*?-->/g, '');
 
-    const [...attrs] = codeWithoutComment.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
+    const scriptCode = code.match(/(?<!<!--[\s\S]*?)<script[\s\S]*?>/g)![0]
+        
+    const [...attrs] = scriptCode.matchAll(/(?<key>\w[^\r\n\s]+?)=["'](?<value>\w[^\r\n\s]+?)["']/g) ?? []
 
     return {
         attrs: attrs.reduce((acc: Attrs, attr) => {
