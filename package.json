@@ -84,7 +84,7 @@
   "dependencies": {
     "@rollup/pluginutils": "^5.0.2",
     "magic-string": "^0.30.0",
-    "unplugin": "^1.0.0"
+    "unplugin": "^1.1.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
