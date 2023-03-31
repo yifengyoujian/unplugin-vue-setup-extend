@@ -72,8 +72,6 @@
     "build": "tsup & npm run build:fix",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts",
-    "lint": "eslint \"{src,test}/**/*.ts\"",
-    "lint:fix": "npm run lint -- --fix",
     "example:dev": "npm -C examples/vite run dev",
     "example:build": "npm -C examples/vue-cli run build",
     "prepublishOnly": "npm run build",
@@ -87,7 +85,6 @@
     "unplugin": "^1.1.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.2",
     "@types/node": "^18.0.0",
     "bumpp": "^9.0.0",
     "eslint": "^8.13.0",
