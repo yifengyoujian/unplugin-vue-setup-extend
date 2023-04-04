@@ -138,9 +138,7 @@ Example: [`examples/vue-cli`](./examples/vue-cli)
 
 ```html
 <template> </template>
-<script setup lang="ts" name="App">
-  // placeholder
-</script>
+<script setup lang="ts" name="App"></script>
 ```
 
 ### Some special cases
@@ -150,7 +148,7 @@ If you have two scripts in your project, we will not convert them; please set th
 ```html
 <template> </template>
 <script setup lang="ts" name="App">
-// The script tag setting here is invalid
+  // This "name" here will not take effect.
 </script>
 
 <script lang="ts">
@@ -159,6 +157,3 @@ If you have two scripts in your project, we will not convert them; please set th
   };
 </script>
 ```
-#### Why do we need placeholder 
-
-If you do not write anything in the script, @vue/compiler does not parse script Setup so the name you set will not take effect.
